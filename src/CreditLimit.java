@@ -98,4 +98,16 @@ public class CreditLimit {
         setCredits();
         setTotalPurchases();
     }
+
+    public static void main(String[] args) {
+        CreditLimit creditLimit = new CreditLimit();
+
+        creditLimit.setAccountNumber();
+
+        while(creditLimit.getAccountNumber() != -1){
+            creditLimit.startApp();
+            System.out.println(creditLimit.checkCustomerStatus());
+            creditLimit.setAccountNumber();
+        }
+    }
 }
