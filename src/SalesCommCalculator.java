@@ -50,21 +50,16 @@ public class SalesCommCalculator {
         return price;
     }
 
-    public void inputItemPrices() {
-        price = Integer.parseInt(JOptionPane.showInputDialog("Enter price of item sold"));
+    public void inputItemPrices(int newPrice) {
+        price = newPrice;
     }
 
-    public void inputItemsSold() {
-        items = JOptionPane.showInputDialog("Enter item sold");
+    public void inputItemsSold(String itemsSold) {
+        items = itemsSold;
     }
 
     public String getItemsSold() {
         return items;
-    }
-
-    public void runApp(){
-        inputItemsSold();
-        inputItemPrices();
     }
 
     public double setSalaryForWeek(int earnings) {
@@ -89,7 +84,8 @@ public class SalesCommCalculator {
 
         commCalculator.startApp();
         while(commCalculator.checkForSentinel() != -1){
-            commCalculator.runApp();
+            commCalculator.inputItemsSold(JOptionPane.showInputDialog("Enter item sold"));
+            commCalculator.inputItemPrices(Integer.parseInt(JOptionPane.showInputDialog("Enter price of item sold")));
             commCalculator.getItemsSold();
             items++;
             itemList = commCalculator.getItemsSold();

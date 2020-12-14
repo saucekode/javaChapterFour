@@ -2,6 +2,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SalesCommCalculatorTest {
@@ -22,8 +24,8 @@ class SalesCommCalculatorTest {
         int itemsSold = 0;
         commCalculator.startApp();
         while(commCalculator.checkForSentinel() != -1){
-            commCalculator.inputItemsSold();
-            commCalculator.inputItemPrices();
+            commCalculator.inputItemsSold(JOptionPane.showInputDialog("Enter item sold"));
+            commCalculator.inputItemPrices(Integer.parseInt(JOptionPane.showInputDialog("Enter price of item sold")));
             itemsSold++;
             commCalculator.startApp();
         }
@@ -36,7 +38,7 @@ class SalesCommCalculatorTest {
         String items = "";
         commCalculator.startApp();
         while(commCalculator.checkForSentinel() != -1){
-            commCalculator.inputItemsSold();
+            commCalculator.inputItemsSold(JOptionPane.showInputDialog("Enter item sold"));
             items += commCalculator.getItemsSold() + "\n";
             commCalculator.startApp();
         }
@@ -50,7 +52,7 @@ class SalesCommCalculatorTest {
         String priceList = "";
         commCalculator.startApp();
         while(commCalculator.checkForSentinel() != -1){
-            commCalculator.inputItemPrices();
+            commCalculator.inputItemPrices(Integer.parseInt(JOptionPane.showInputDialog("Enter price of item sold")));
             priceList += "$" + commCalculator.getItemPrices() + "\n";
             commCalculator.startApp();
         }
@@ -66,7 +68,7 @@ class SalesCommCalculatorTest {
         int priceTotal = 0;
         commCalculator.startApp();
         while(commCalculator.checkForSentinel() != -1){
-            commCalculator.inputItemPrices();
+            commCalculator.inputItemPrices(Integer.parseInt(JOptionPane.showInputDialog("Enter price of item sold")));
             priceTotal += commCalculator.getItemPrices();
             commCalculator.startApp();
         }
@@ -81,7 +83,7 @@ class SalesCommCalculatorTest {
         int priceTotal = 0;
         commCalculator.startApp();
         while(commCalculator.checkForSentinel() != -1){
-            commCalculator.inputItemPrices();
+            commCalculator.inputItemPrices(Integer.parseInt(JOptionPane.showInputDialog("Enter price of item sold")));
             priceTotal += commCalculator.getItemPrices();
             commCalculator.startApp();
         }
