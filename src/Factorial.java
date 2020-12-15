@@ -12,6 +12,7 @@ import javax.swing.*;
 
 public class Factorial {
     private int userInput;
+    private double factorial;
 
     public void collectUserInput(int userInput) {
         if(userInput > 0){
@@ -24,19 +25,40 @@ public class Factorial {
         return userInput;
     }
 
-    public int printFactorial() {
-        int counter = getUserInput();
-        int factorial = 1;
+    public void generateFactorial(int expectedNumber){
+        int counter = expectedNumber;
+        double factorial = 1;
         while(counter > 0){
             factorial *= counter;
             counter--;
         }
+        this.factorial = factorial;
+    }
+
+    public double printFactorial() {
         return factorial;
     }
+
+    public double generateMathConstant() {
+        int eCounter = 0;
+        int temp = getUserInput();
+        double e = 0;
+        while(eCounter < temp){
+            generateFactorial(temp);
+            temp--;
+            e += 1/printFactorial();
+        }
+        e = e + 1;
+        return e;
+    }
+
 
     public static void main(String[] args) {
         Factorial factorial = new Factorial();
         factorial.collectUserInput(Integer.parseInt(JOptionPane.showInputDialog("Enter a number")));
+        factorial.generateFactorial(factorial.getUserInput());
         System.out.println("The factorial of " + factorial.getUserInput() + " is " + factorial.printFactorial());
+        System.out.printf("The Math constant of %d is %.2f", factorial.getUserInput(), factorial.generateMathConstant());
     }
+
 }
